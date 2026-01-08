@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Orbitron, Poppins } from "next/font/google";
-import Footer from "./components/Footer"; // Import the Footer
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar"; // Import Navbar
+import { createSupabaseServerClient } from "./lib/supabase/server"; // Import server client
 import "./globals.css";
 
 const poppins = Poppins({
@@ -20,14 +22,20 @@ export const metadata: Metadata = {
   description: "Welcome to TheLocalHost Forums",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${orbitron.variable} antialiased`}>
+        <Navbar user={user} />
         <main>{children}</main>
         <Footer />
       </body>

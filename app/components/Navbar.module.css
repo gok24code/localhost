@@ -1,8 +1,10 @@
 .navbar {
   position: fixed;
-  top: 25px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
   padding: 0.8rem 1.5rem;
   background-color: rgba(22, 27, 34, 0.8);
   border: 1px solid var(--border-color);
@@ -11,12 +13,16 @@
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px var(--shadow-color);
   z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navList {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -25,8 +31,82 @@
   font-weight: 500;
   color: var(--text-secondary);
   transition: color 0.3s ease;
+  padding: 0.5rem 0;
 }
 
 .navList li a:hover {
   color: var(--text-primary);
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.usernameLink {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.usernameLink:hover {
+  color: var(--accent-primary);
+}
+
+.logoutButton {
+  font-family: var(--font-poppins);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.authButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.loginButton, .registerButton {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.loginButton {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+.loginButton:hover {
+  color: var(--text-primary);
+  background-color: var(--border-color);
+}
+
+.registerButton {
+  background-color: var(--accent-secondary);
+  color: #fff;
+}
+
+.registerButton:hover {
+  background-color: var(--accent-primary);
 }

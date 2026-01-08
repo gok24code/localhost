@@ -1,15 +1,21 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ForumTopics from "./components/ForumTopics";
+import { createSupabaseServerClient } from "./lib/supabase/server";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createSupabaseServerClient();
+  const { data: topics } = await supabase
+    .from("topics")
+    .select("*")
+    .order("created_at", { ascending: false });
+
   return (
     <main className={styles.main}>
       <Navbar />
       <Hero />
-      <ForumTopics />
-      {/* Other sections like About, Crew, QNA can be added here later */}
+      <ForumTopics topics={topics ?? []} />
     </main>
   );
 }
