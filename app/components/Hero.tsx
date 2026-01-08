@@ -17,7 +17,7 @@ const Hero = () => {
         ))}
       </h1>
       <p className={styles.subtitle}>
-        The modern community forum for developers and enthusiasts.
+        The modern community website for developers and enthusiasts.
       </p>
     </div>
   );
