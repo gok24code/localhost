@@ -11,7 +11,6 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <Hero />
-      <ForumTopics topics={topics} />
     </main>
   );
 }
