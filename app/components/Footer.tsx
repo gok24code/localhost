@@ -6,7 +6,12 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.supportSection}>
-          <Link href="https://www.youtube.com/@Gok2" className={styles.supportLink} target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://www.youtube.com/@Gök2"
+            className={styles.supportLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Support
           </Link>
           <a href="mailto:goktugtoyguc@gmail.com" className={styles.mailLink}>
