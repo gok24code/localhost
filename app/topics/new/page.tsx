@@ -15,32 +15,43 @@ export default async function NewTopicPage() {
 
   const createTopic = async (formData: FormData) => {
     "use server";
+    console.log("--- Create Topic Server Action Started ---");
+
     const title = formData.get("title") as string;
     const category = formData.get("category") as string;
     const content = formData.get("content") as string;
-      const supabase = await createSupabaseServerClient();
+    console.log("Form Data:", { title, category, content });
+
+    const supabase = await createSupabaseServerClient();
 
     const {
       data: { user },
     } = await supabase.auth.getUser();
 
     if (!user) {
+      console.error("Error: User is not authenticated.");
       return redirect("/login");
     }
+    console.log("Authenticated User ID:", user.id);
 
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("username")
       .eq("id", user.id)
       .single();
 
-    if (!profile) {
-      // This should ideally not happen due to the trigger we created
-      // but it's good practice to handle it.
-      return redirect("/dashboard?error=Profile not found");
+    if (profileError) {
+        console.error("Error fetching profile:", profileError.message);
+        return redirect(`/topics/new?error=Could not find user profile.`);
     }
 
-    const { error } = await supabase.from("topics").insert([
+    if (!profile) {
+      console.error("Error: Profile not found for the user.");
+      return redirect(`/topics/new?error=Profile not found.`);
+    }
+    console.log("Fetched Profile:", profile);
+
+    const { error: insertError } = await supabase.from("topics").insert([
       {
         title,
         category,
@@ -49,9 +60,14 @@ export default async function NewTopicPage() {
       },
     ]);
 
-    if (error) {
-      return redirect(`/topics/new?error=${error.message}`);
+    if (insertError) {
+      console.error("Error inserting topic:", insertError.message);
+      // Encode the error message to make it URL-safe
+      const errorMessage = encodeURIComponent(insertError.message);
+      return redirect(`/topics/new?error=${errorMessage}`);
     }
+
+    console.log("--- Topic Inserted Successfully ---");
 
     // Revalidate both paths to ensure fresh data
     revalidatePath("/");
