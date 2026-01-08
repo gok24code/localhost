@@ -16,6 +16,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           <Link href="/">Home</Link>
         </li>
         <li>
+          <Link href="/topics">Topics</Link>
+        </li>
+        <li>
           <Link href="/about">About</Link>
         </li>
         <li>

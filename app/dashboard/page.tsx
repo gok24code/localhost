@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import styles from "./dashboard.module.css";
 import DeleteAccount from "../components/DeleteAccount";
+import BiographyForm from "../components/BiographyForm";
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();
@@ -13,6 +14,12 @@ export default async function DashboardPage() {
   if (!user) {
     redirect("/login");
   }
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("biography")
+    .eq("id", user.id)
+    .single();
 
   const username = user.user_metadata.user_name || user.email;
 
@@ -31,9 +38,7 @@ export default async function DashboardPage() {
         {/* Biography Card */}
         <div className={styles.card}>
           <h2>Your Biography</h2>
-          <p className={styles.bioPlaceholder}>
-            Your biography is not set yet. We will add an edit option soon.
-          </p>
+          <BiographyForm biography={profile?.biography || null} />
         </div>
 
         {/* Account Deletion Card */}
