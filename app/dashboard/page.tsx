@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import styles from "./dashboard.module.css";
 import DeleteAccount from "../components/DeleteAccount";
-import BiographyForm from "../components/BiographyForm";
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();
@@ -15,21 +14,12 @@ export default async function DashboardPage() {
     redirect("/login");
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("biography")
-    .eq("id", user.id)
-    .single();
-
   const username = user.user_metadata.user_name || user.email;
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Welcome, {username}</h1>
       <p className={styles.subtitle}>This is your personal dashboard.</p>
-
-      <h2 className={styles.biographyHeader}>Your Biography</h2>
-      <BiographyForm biography={profile?.biography || null} />
 
       <div className={styles.grid}>
         {/* New Topic Card */}

@@ -16,6 +16,7 @@ export default async function NewTopicPage() {
     "use server";
     const title = formData.get("title") as string;
     const category = formData.get("category") as string;
+    const content = formData.get("content") as string;
       const supabase = await createSupabaseServerClient();
 
     const {
@@ -42,6 +43,7 @@ export default async function NewTopicPage() {
       {
         title,
         category,
+        content,
         author_username: profile.username,
       },
     ]);
@@ -78,6 +80,16 @@ export default async function NewTopicPage() {
             placeholder="e.g., Web Development, Showcase, General"
             required
             className={styles.input}
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            placeholder="Write the main content of your topic here..."
+            required
+            className={styles.textarea}
           />
         </div>
         <button type="submit" className={styles.submitButton}>

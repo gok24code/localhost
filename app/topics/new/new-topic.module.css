@@ -54,6 +54,25 @@
   box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
 }
 
+.textarea {
+  font-family: var(--font-poppins);
+  padding: 0.8rem 1rem;
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  min-height: 150px;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+}
+
 .submitButton {
   margin-top: 1rem;
   font-family: var(--font-poppins);
