@@ -1,0 +1,61 @@
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.title {
+  font-family: var(--font-orbitron);
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUpFadeIn 0.8s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes slideUpFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  opacity: 0;
+  animation: fadeIn 1s forwards 1.5s; /* Delay to start after title animation */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.2rem;
+    letter-spacing: 3px;
+  }
+}
