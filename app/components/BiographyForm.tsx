@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "@/app/lib/supabase/client";
+import { updateBiography } from "@/app/actions/updateBiography";
 import styles from "./BiographyForm.module.css";
 
 export default function BiographyForm({ biography }: { biography: string | null }) {
@@ -15,22 +15,12 @@ export default function BiographyForm({ biography }: { biography: string | null 
     setError(null);
     setSuccess(false);
 
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const result = await updateBiography(bio);
 
-    if (user) {
-      const { error } = await supabase
-        .from("profiles")
-        .update({ biography: bio })
-        .eq("id", user.id);
-
-      if (error) {
-        setError(error.message);
-      } else {
-        setSuccess(true);
-      }
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setSuccess(true);
     }
     setLoading(false);
   };
