@@ -10,10 +10,13 @@ export default async function Home() {
     .from("topics")
     .select("*")
     .order("created_at", { ascending: false });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <main className={styles.main}>
-      <Navbar />
+      <Navbar user={user} />
       <Hero />
       <ForumTopics topics={topics ?? []} />
     </main>
