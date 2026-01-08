@@ -6,15 +6,17 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.supportSection}>
-          <Link href="/support" className={styles.supportLink}>
+          <Link href="https://www.youtube.com/@Gok2" className={styles.supportLink} target="_blank" rel="noopener noreferrer">
             Support
           </Link>
-          <a href="mailto:support@thelocalhost.com" className={styles.mailLink}>
+          <a href="mailto:goktugtoyguc@gmail.com" className={styles.mailLink}>
             Send Mail
           </a>
         </div>
         <div className={styles.bottomBar}>
-          <p>&copy; {new Date().getFullYear()} TheLocalHost. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} TheLocalHost. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
