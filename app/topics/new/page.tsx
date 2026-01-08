@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import styles from "./new-topic.module.css";
 
 export default async function NewTopicPage() {
-  const supabase = createSupabaseServerClient();
+    const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -16,7 +16,7 @@ export default async function NewTopicPage() {
     "use server";
     const title = formData.get("title") as string;
     const category = formData.get("category") as string;
-    const supabase = createSupabaseServerClient();
+      const supabase = await createSupabaseServerClient();
 
     const {
       data: { user },

@@ -7,7 +7,7 @@ export default function LogoutButton() {
 
   const signOut = async () => {
     "use server";
-    const supabase = createSupabaseServerClient();
+    const supabase = await createSupabaseServerClient();
     await supabase.auth.signOut();
     revalidatePath("/", "layout");
     redirect("/");

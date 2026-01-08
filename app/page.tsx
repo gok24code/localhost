@@ -5,7 +5,7 @@ import { createSupabaseServerClient } from "./lib/supabase/server";
 import styles from "./page.module.css";
 
 export default async function Home() {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const { data: topics } = await supabase
     .from("topics")
     .select("*")

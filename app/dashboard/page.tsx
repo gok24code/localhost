@@ -5,7 +5,7 @@ import styles from "./dashboard.module.css";
 import DeleteAccount from "../components/DeleteAccount";
 
 export default async function DashboardPage() {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
