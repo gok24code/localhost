@@ -7,7 +7,7 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.supportSection}>
           <Link
-            href="https://www.youtube.com/@Gök2"
+            href="https://www.youtube.com/@gok24code"
             className={styles.supportLink}
             target="_blank"
             rel="noopener noreferrer"
