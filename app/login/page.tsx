@@ -25,7 +25,11 @@ export default function LoginPage() {
     });
 
     if (error) {
-      setError(error.message);
+      if (error.message.toLowerCase().includes("confirm")) {
+        setError("Please check your email to confirm your account before logging in.");
+      } else {
+        setError(error.message);
+      }
       setLoading(false);
     } else {
       // On successful login, redirect to the home page.

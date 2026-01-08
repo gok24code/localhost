@@ -29,6 +29,7 @@ export default function RegisterPage() {
       email,
       password,
       options: {
+        emailRedirectTo: `${location.origin}/auth/callback`,
         data: {
           user_name: username,
         },
@@ -54,7 +55,7 @@ export default function RegisterPage() {
         {success ? (
           <div className={styles.successMessage}>
             <p>Registration successful!</p>
-            <p>Please check your email to verify your account.</p>
+            <p>You can now log in with your new account.</p>
           </div>
         ) : (
           <form onSubmit={handleRegister} className={styles.form}>
