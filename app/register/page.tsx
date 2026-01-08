@@ -54,7 +54,7 @@ export default function RegisterPage() {
       <div className={styles.formWrapper}>
         <h1 className={styles.title}>Create Your Account</h1>
         <p className={styles.subtitle}>
-          Join TheLocakHost community today.
+          Join TheLocalHost community today.
         </p>
 
         {success ? (

@@ -16,8 +16,8 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "TheLocakHost",
-  description: "Welcome to TheLocakHost Forums",
+  title: "TheLocalHost",
+  description: "Welcome to TheLocalHost Forums",
 };
 
 export default function RootLayout({
