@@ -1,7 +1,7 @@
 import styles from "./Hero.module.css";
 
 const Hero = () => {
-  const siteName = "TheLocakHost";
+  const siteName = "TheLocalHost";
 
   return (
     <div className={styles.heroContainer}>
@@ -16,7 +16,9 @@ const Hero = () => {
           </span>
         ))}
       </h1>
-      <p className={styles.subtitle}>The modern community forum for developers and enthusiasts.</p>
+      <p className={styles.subtitle}>
+        The modern community forum for developers and enthusiasts.
+      </p>
     </div>
   );
 };
