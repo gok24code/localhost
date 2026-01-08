@@ -28,6 +28,13 @@ body {
   color: var(--text-primary);
   background: var(--background-dark);
   font-family: var(--font-poppins);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 a {

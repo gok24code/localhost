@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Orbitron, Poppins } from "next/font/google";
+import Footer from "./components/Footer"; // Import the Footer
 import "./globals.css";
 
 const poppins = Poppins({
@@ -27,7 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${orbitron.variable} antialiased`}>
-        {children}
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
