@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/app/lib/supabase/server";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import styles from "./new-topic.module.css";
 
@@ -52,8 +53,12 @@ export default async function NewTopicPage() {
       return redirect(`/topics/new?error=${error.message}`);
     }
 
-    // Redirect to the home page to see the new topic
-    redirect("/");
+    // Revalidate both paths to ensure fresh data
+    revalidatePath("/");
+    revalidatePath("/topics");
+
+    // Redirect to the topics page to see the new topic
+    redirect("/topics");
   };
 
   return (
