@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { createClient } from "@/app/lib/supabase/client";
 import styles from "./page.module.css";
 
@@ -13,11 +12,10 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const router = useRouter();
-  const [supabase] = useState(() => createClient());
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const supabase = createClient(); // Create client only when needed
     setError(null);
     setLoading(true);
 
@@ -41,10 +39,6 @@ export default function RegisterPage() {
       setError(error.message);
     } else {
       setSuccess(true);
-      // Optionally, you can redirect the user after a few seconds
-      setTimeout(() => {
-        router.push("/login"); // Assuming you have a login page
-      }, 3000);
     }
     setLoading(false);
   };
@@ -60,7 +54,7 @@ export default function RegisterPage() {
         {success ? (
           <div className={styles.successMessage}>
             <p>Registration successful!</p>
-            <p>Please check your email to verify your account. Redirecting to login...</p>
+            <p>Please check your email to verify your account.</p>
           </div>
         ) : (
           <form onSubmit={handleRegister} className={styles.form}>
