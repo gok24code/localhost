@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
 
   // 1. Get the current user from the session
   const supabase = createServerClient(
