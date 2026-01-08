@@ -16,6 +16,13 @@
   margin-bottom: 3rem;
 }
 
+.biographyHeader {
+  font-family: var(--font-orbitron);
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

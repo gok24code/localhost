@@ -28,18 +28,15 @@ export default async function DashboardPage() {
       <h1 className={styles.title}>Welcome, {username}</h1>
       <p className={styles.subtitle}>This is your personal dashboard.</p>
 
+      <h2 className={styles.biographyHeader}>Your Biography</h2>
+      <BiographyForm biography={profile?.biography || null} />
+
       <div className={styles.grid}>
         {/* New Topic Card */}
         <Link href="/topics/new" className={styles.card}>
           <h2>Create New Topic &rarr;</h2>
           <p>Share your thoughts and start a new discussion.</p>
         </Link>
-
-        {/* Biography Card */}
-        <div className={styles.card}>
-          <h2>Your Biography</h2>
-          <BiographyForm biography={profile?.biography || null} />
-        </div>
 
         {/* Account Deletion Card */}
         <div className={`${styles.card} ${styles.dangerZone}`}>
